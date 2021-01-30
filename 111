@@ -1,0 +1,760 @@
+# Questions from CP3 exam
+
+## Questions extracted from Firefox cache
+
+Extracted from saved HTML using my script.
+
+### Question 1 (my 11)
+
+What is internal formatting?
+
+- [ ] It consists of changing the option of saving/displaying data inside the function
+- [ ] It consists in formatting bytes available in the program
+- [ ] It involves formatting variables when printing
+
+### Question 2 (my 7)
+
+Can a virtual function be friends with another class?
+
+- [ ] No
+- [ ] Yes
+
+### Question 3 (my 35)
+
+There is given the class
+class Line {\
+&emsp;&emsp;int count;\
+&emsp;&emsp;char\* elements;\
+public:\
+&emsp;&emsp;Line(char\* s, int c);\
+};\
+Which operator allows to get a substring?
+&emsp;&emsp;
+
+- [ ] Line\* Line::operator()(int start, int end){\
+&emsp;&emsp;if(start &gt; -1 &amp;&amp; start &lt; end &amp;&amp; end &lt; count)&nbsp;\
+&emsp;&emsp;&emsp;&emsp;return Line(this-&gt;element[start], end - start);\
+&emsp;&emsp;throw 1;&nbsp;\
+}
+- [ ] class Line{\
+&emsp;&emsp;friend Line&amp; operator(Line&amp; l, int start, int end);\
+};\
+Line&amp; operator()(Line&amp; l, int start, int end){\
+&emsp;&emsp;if(start &gt; -1 &amp;&amp; start &lt; end &amp;&amp; end &lt; l.count)&nbsp;\
+&emsp;&emsp;&emsp;&emsp;return Line(&amp;l.element[start], end - start);\
+&emsp;&emsp;throw 1;\
+}&emsp;&emsp;
+- [ ] Line&amp; Line::operator()(int start, int end){\
+&emsp;&emsp;if(start &gt; -1 &amp;&amp; start &lt; end &amp;&amp; end &lt; count)&nbsp;\
+&emsp;&emsp;&emsp;&emsp;return Line(this-&gt;element[start], end - start);\
+&emsp;&emsp;throw 1;&nbsp;\
+}&emsp;&emsp;
+- [ ] Line Line::operator()(int start, int end){\
+&emsp;&emsp;if(start &gt; -1 &amp;&amp; start &lt; end &amp;&amp; end &lt; count)&nbsp;\
+&emsp;&emsp;&emsp;&emsp;return Line(&amp;this-&gt;element[start], end - start);\
+&emsp;&emsp;throw 1;&nbsp;\
+}
+
+### Question 4 (my 34)
+
+There is given the class\
+class Line {\
+&emsp;&emsp;int count;\
+&emsp;&emsp;char\* elements;\
+};\
+Which operator allows to get and set a letter?
+&emsp;&emsp;
+
+- [ ] char&amp; operator[](int i){\
+&emsp;&emsp;return elements[i];\
+}&emsp;&emsp;
+- [ ] friend char operator[](int i) {\
+&emsp;&emsp;return elements[i];\
+}
+- [ ] char&amp; Line::operator[](int i){\
+&emsp;&emsp;return this-&gt;elements[i];\
+}
+- [ ] char\* Line::operator[](int i){&emsp;&emsp;\
+&emsp;&emsp;return this-&gt;elements[i];\
+}
+
+### Question 5 (my 33)
+
+There is given the class\
+class Line {\
+&emsp;&emsp;int count;\
+&emsp;&emsp;char\* elements;\
+};\
+Which implementation of the assignment operator is correct?
+&emsp;&emsp;
+
+- [ ] Line Line::operator=(const Line&amp; s) {\
+&emsp;&emsp;if(this == &amp;s)&emsp;&emsp;\
+&emsp;&emsp;&emsp;&emsp;return \*this;\
+&emsp;&emsp;this-&gt;count = s.count;\
+&emsp;&emsp;elements = new char[count + 1];\
+&emsp;&emsp;strcpy(elements, s.elements);\
+&emsp;&emsp;delete[] elements;&nbsp;\
+&emsp;&emsp;return \*this;\
+}
+- [ ] Line Line::operator=(const Line&amp; v){\
+&emsp;&emsp;if(this == &amp;v)\
+&emsp;&emsp;&emsp;&emsp;return \*this;\
+&emsp;&emsp;this-&gt;elements = v.elements;&nbsp;\
+&emsp;&emsp;this-&gt;count = v.count;\
+&emsp;&emsp;return \*this;\
+}&emsp;&emsp;
+- [ ] Line Line::operator=(const Line&amp; s){\
+&emsp;&emsp;if(\*this == s)&nbsp;\
+&emsp;&emsp;&emsp;&emsp;return \*this;\
+&emsp;&emsp;delete[] elements;&nbsp;\
+&emsp;&emsp;this-&gt;count = s.count;\
+&emsp;&emsp;elements = new char[count + 1];\
+&emsp;&emsp;strcpy(elements, s.elements);\
+&emsp;&emsp;return \*this;\
+}&emsp;&emsp;
+- [ ] Line Line::operator=(const Line&amp; e){\
+&emsp;&emsp;if(this == &amp;e)&nbsp;\
+&emsp;&emsp;&emsp;&emsp;return \*this;\
+&emsp;&emsp;delete[] elements;&nbsp;\
+&emsp;&emsp;count = e.count;\
+&emsp;&emsp;elements = new char[count + 1];\
+&emsp;&emsp;strcpy(elements, e.elements);\
+&emsp;&emsp;return \*this;\
+}
+
+### Question 6 (my 32)
+
+There is given the class\
+class Line {\
+&emsp;&emsp;int count;\
+&emsp;&emsp;char\* elements;\
+};\
+Which from the constructors below is called a constructor with parameter?
+&emsp;&emsp;
+
+- [ ] Line::Line(const Line\* v);
+- [ ] Line::Line();
+- [ ] Line::Line(const Line&amp; v);
+- [ ] Line::Line(Line&amp;&amp; v);
+
+### Question 7 (my 31)
+
+There is given the class\
+class Line {\
+&emsp;&emsp;int count;\
+&emsp;&emsp;char\* elements;\
+};\
+Which from the constructors correctly initialize class members?
+&emsp;&emsp;
+
+- [ ] Line::Line(char\* string):count(strlen(string)){\
+&emsp;&emsp;elements = new char[count+1];&nbsp;\
+&emsp;&emsp;strcpy(elements, string);\
+}
+- [ ] Line::Line(Line &amp;l):count(l.count),elements(l.elements) {}
+- [ ] Line::Line():count(0), elements(nullptr) {}
+- [ ] Line::Line(char\* string, int len = 10):count(len) {\
+&emsp;&emsp;elements = new char[len+1];&nbsp;\
+&emsp;&emsp;elements = string;\
+}
+
+### Question 8 (my 30)
+
+What do we use the **try** block for?
+
+- [ ] It specifies an area where an exception may occur
+- [ ] It specifies the code that will respond to a reported exception
+- [ ] None answer is correct
+- [ ] It is used to signal an exception
+
+### Question 9 (my 29)
+
+How do we define exceptions?
+
+- [ ] It is a failure situation that can be foreseen
+- [ ] It is a situation generating a program failure
+- [ ] It is a logical error in the program
+- [ ] It is any situation defined by the programmer as an exceptional
+
+### Question 10 (my 28)
+
+What is the difference between reporting an exception and ending the function with the **return** statement?
+
+- [ ] **return**&nbsp;- transfers the control to the place where the function is called; throwing an exception - transfers the control to the appropriate exception handling block
+- [ ] **return**&nbsp;- it is possible to return only one type of data; throwing an exception - possibility of raising any type of exception
+- [ ] There are no differences, both return error information
+- [ ] None of the answers are correct
+
+### Question 11 (my 27)
+
+What happens with the access to the elements of the base class, when it is inherited with **protected** keyword?
+
+- [ ] Public members remain public; protected members remain protected; private members are unavailable
+- [ ] Members from all sections have protected visibility
+- [ ] Public and protected members have protected visibility; private variables are inaccessible
+
+### Question 12 (my 10)
+
+What does a low-level work with streams look like?
+
+- [ ] It is an interpretation of read bytes to built-in types
+- [ ] It is the possibility of referring directly to class members
+- [ ] It is a direct data transfer, without waiting for a certain amount of data
+- [ ] It is working on single bytes
+
+### Question 13 (my 26)
+
+What is not inherited?
+
+- [ ] Assignment operator
+- [ ] Everything is inherited
+- [ ] All constructors and destructor
+- [ ] Default constructors, copy constructors, destructor
+
+### Question 14 (my 24)
+
+Given the class hierarchy:&nbsp;\
+**class A;**\
+**class B: public A;**\
+**class C: protected A;**\
+**class D: public B, private C;**\
+what will be the access to the **A** class fields in **D**?
+
+- [ ] The access will be consistent with the most restrictive
+- [ ] The programmer must define how to access members of class inherited in such manner
+- [ ] The access will be consistent with the less restrictive
+
+### Question 15 (my 22)
+
+There is given the following class hierarchy:\
+**class A {&nbsp;&nbsp;public: int x; };**\
+**class B: public A;**\
+**class C { protected: int x;};**\
+**class D: public B, public C;**\
+When calling the member x inside D class, do we have the ambiguity problem?
+
+- [ ] Yes
+- [ ] No
+
+### Question 16 (my 21)
+
+How are template functions matched?
+
+- [ ] The compiler only considers the types of function arguments when matching template invocation
+- [ ] None of the answers are correct
+- [ ] The compiler takes into account the types of the function arguments and the return value when matching the template call
+- [ ] The compiler limits itself to checking the number of arguments of the called function
+
+### Question 17 (my 20)
+
+At compilation time, when compiler searches for a function build according to the template, what is the first rule checked?
+
+- [ ] Template match with user-defined conversions of arguments
+- [ ] Exact match of the function
+- [ ] Template match, which could produce a function from an exact match
+- [ ] Template match with trivial conversion of arguments
+
+### Question 18 (my 18)
+
+What is the class template parameter?
+
+- [ ] A constant expression, for instance an integer
+- [ ] A variable name
+- [ ] A type name
+
+### Question 19 (my 16)
+
+Can a specialized template class be created? What could it be for?
+
+- [ ] No, this solution does not make sense
+- [ ] Yes, it would work with a type that needs to be handled differently
+- [ ] Yes, we should assure separate implementation for each standard type
+
+### Question 20 (my 15)
+
+What is r-value?
+
+- [ ] Expression type that may appear to the right and left of the assignment
+- [ ] An expression that can only appear on the right side of the assignment
+- [ ] An anonymous object
+- [ ] An expression that can only appear on the left side of the assignment
+
+### Question 21 (my 14)
+
+What advantages does one get by using&nbsp;**auto_ptr&lt;&gt;**&nbsp;template?
+
+- [ ] Programs written with use of&nbsp;**auto_ptr** does not have memory leaks
+- [ ] When assigning a regular pointer to this data type, one does not need to delete it
+- [ ] Does not have to worry anymore about deleting the memory when the variable is no longer used
+
+### Question 22 (my 13)
+
+What is the **std::initializer_list&lt;&gt;**?
+
+- [ ] It allows one to pass any number of values of the same type to the function
+- [ ] It enables one to create a constructor that allows to take a list of values of the same type
+- [ ] It allows one to pass any number of arguments to the function
+- [ ] It allows initialization of class constants
+
+### Question 23 (my 9)
+
+Can a virtual function be bound by early binding? If so, how?
+
+- [ ] Yes, it can be bound by early binding when called in its class constructor
+- [ ] No, it can only be bound by late binding
+- [ ] Yes, it can be bound with an early binding when called using the range oprerator
+- [ ] Yes, it can be bound via early binding when called on behalf of an object
+
+### Question 24 (my 12)
+
+Can we overload **operator &gt;&gt;**&nbsp;to get class K elements from the stream? How would look like a prototype for such a function?
+
+- [ ] Yes, **istream&amp; operator&gt;&gt;(istream&amp; in, K&amp; k);**
+- [ ] Yes, **istream&amp; operator&gt;&gt;(K&amp; k, istream&amp; in);**
+- [ ] Yes, **bool operator&gt;&gt;(ostream&amp; in, K&amp; k);**
+- [ ] No
+
+### Question 25 (my 8)
+
+What is the **RTTI**&nbsp;technique used for?
+
+- [ ] It lets you to specify the name of the object's base class at runtime
+- [ ] It allows you to apply polymorphism in the program
+- [ ] It is necessary when handling exceptions
+- [ ] It allows to recognize the type of the object during program execution
+
+### Question 26 (my 6)
+
+What is a lambda function?
+
+- [ ] It is local, unnamed function.
+- [ ] It is declared in a place where a regular function would be passed as an argument, as a function pointer
+- [ ] It is a type of an inline function that can be used globally
+
+### Question 27 (my 4)
+
+Which STL container interface function returns pointer to the first element?
+
+- [ ] **rend()**
+- [ ] **rbegin()**
+- [ ] **end()**
+- [ ] **begin()**
+
+### Question 28 (my 3)
+
+How can we initialize a constant class member?
+
+- [ ] In all class methods
+- [ ] In a class definition
+- [ ] In the initialization list in the constructor
+- [ ] Inside constructor
+
+### Question 29 (my 1)
+
+What a friend function is?
+
+- [ ] A function that is not a class member but has access to its protected and private members
+- [ ] A global function that takes an object of a given class as a parameter
+- [ ] A global function that is not a class member but has access to its protected and private fields
+- [ ] A function that is a member of a class that takes an object of its own class
+
+### Question 30 (my 23)
+
+When do not standard conversions&nbsp;work?
+
+- [ ] For classes inherited publicly
+- [ ] None of the mentioned
+- [ ] For classes inherited privately
+- [ ] For classes inherited with a protected quantifier
+
+### Question 31 (my 25)
+
+What are the advantages of inheritance?
+
+- [ ] Possibility to extend the existing class
+- [ ] Possibility of using polymorphism
+- [ ] Ability to extend the class even if we do not know its definition
+
+### Question 32 (my 2)
+
+For a given expression:&nbsp;\
+**MyClass a, b;**\
+**a = 'k' + b;**\
+can the addition operator be overloaded as a member function of&nbsp; MyClass? Why?
+
+- [ ] No, because the class member operator should be called for a given object on its left side
+- [ ] No, because the addition operator can be overloaded only as a global function
+- [ ] Yes, because one can always overload the addition operator
+- [ ] Yes, but we have to define the order of arguments
+
+### Question 33 (my 5)
+
+What gives the uniform initialization?
+
+- [ ] It allows to initialize all template variables using the same syntax
+- [ ] It is used for creation of object of **std::list** type
+- [ ] It allows to initialize variables of any type using the same syntax
+
+### Question 34 (my 19)
+
+In what case will the template function not be created?
+
+- [ ] If we have not implemented the function for given parameters of its invocation
+- [ ] If the type of its invocation does not allow the correct compilation of the function
+- [ ] If we do not specify the return type of such a function
+
+### Question 35 (my 17)
+
+Can regular classes be mixed with template classes in inheritance?
+
+- [ ] Yes
+- [ ] No
+
+## Questions from other sources - received cache
+
+### Question 36 (cache2 2)
+
+What does it mean that one class is a friend to another?
+
+- [ ] When all classes have access to all members of one class, we call this class a friend class.
+- [ ] Classes cannot be friends
+- [ ] When one class declares friendship to the other class, the other class has access to all members of class declaring the friendship
+
+### Question 37 (cache2 12)
+
+What does high-level work with streams ensure?
+
+- [ ] Working directly with bytes in the stream
+- [ ] Automatic interpretation of read bytes and their conversion to built-in types
+- [ ] Batch data fetching from input for optimization
+
+### Question 38 (cache2 13)
+
+What are <b>RTTI&nbsp;</b>characteristics?
+
+- [ ] It is available for objects of all classes.
+- [ ] It allows to determine the object type while the program executes
+- [ ] It is a mechanism that is responsible for polymorphism
+- [ ] It is a mechanism, that exposes information about an object’s datatype&nbsp;during runtime
+
+### Question 39 (cache2 14)
+
+What is a named constant (**const**) and how is it different from the constant created by **#define**?
+
+- [ ] It is a constant whose value can be changed in the class constructor
+- [ ] It is a constant whose value is assigned in each class method
+- [ ] It is a real variable with address on which operators can be applied
+
+### Question 40 (cache2 17)
+
+Can template classes be inherited?
+
+- [ ] Yes, but only through other template classes
+- [ ] Yes, but only by other classes that are not template classes
+- [ ] No
+- [ ] Yes
+
+### Question 41 (cache2 18)
+
+Can a template class define a default constructor? How that would look like for a&nbsp;\
+**template&lt;typename B&gt;**\
+**class A{**\
+**...**\
+**};**
+
+- [ ] Yes, A&lt;B&gt;::A(){};
+- [ ] No
+- [ ] Yes, A::A&lt;B&gt;(){};
+
+### Question 42 (cache2 21)
+
+What are the templates for?
+
+- [ ] They are for extending existing user types
+- [ ] They are to create a family of very similar functions or classes that do the same for different data types
+- [ ] They are for overloading existing built-in types
+
+### Question 43 (cache2 26)
+
+What the multi-level inheritance is?
+
+- [ ] It enables the use of polymorphism
+- [ ] It allows inheriting from a class that inherits itself from another class
+- [ ] It allows inheritance from multiple independent classes
+
+### Question 44 (cache2 28)
+
+What are exception hierarchies and why are they created?
+
+- [ ] They minimize the number of blocks **catch**
+- [ ] They are necessary to use polymorphism
+- [ ] They allow grouping of exceptions of a similar type
+- [ ] They allow to propose initial general exception group handling
+
+### Question 45 (cache2 29)
+
+What are the stages of handling exceptions?
+
+- [ ] Exception handling
+- [ ] Signaling an exception when an exception has been detected
+- [ ] Calling the destructor of the object throwing the exception
+- [ ] Specifying the area where the exception can be generated
+
+### Question 46 (cache2 4)
+
+What are the differences between **NULL** and **nullptr**?
+
+- [ ] The **nullptr** is&nbsp;equivalent to zero value, thus it makes the compilation faster when compared to expressions with **NULL**
+- [ ] The&nbsp;**NULL**&nbsp;can be assigned only to pointers and bool type, while the&nbsp;**nullptr**&nbsp;may be assigned to any type
+- [ ] The **nullptr** can be assigned only to pointers and bool type, while the **NULL** may be assigned to any type
+
+### Question 47 (cache2 6)
+
+Which of the following types from STL are implemented using bidirectional list?
+
+- [ ] **std::list**
+- [ ] **std::vector**
+- [ ] **std::set**
+- [ ] **std::array**
+
+### Question 48 (cache2 7)
+
+What is early binding?
+
+- [ ] It selects a virtual function during code execution
+- [ ] It is based on the earlier declaration of the function in the file before its implementation
+- [ ] It associates the place where the function is called with its address during compilation
+
+### Question 49 (cache2 9)
+
+What is a pure virtual function?
+
+- [ ] This is a virtual method in an abstract class
+- [ ] This is a vritual method, assigned to zero, with a body
+- [ ] This is a method where the word **virtual**&nbsp;was put before its name and its body was not defined
+- [ ] This is a virtual method, assigned to zero, with no defined body
+
+## Questions from other sources - PDF
+
+### Question 50 (q2)
+
+When is the copy constructor called implicitly?
+
+- [ ] When the function returns an object of some class by value
+- [ ] When the function returns an object of some class by reference
+- [ ] When passing arguments to functions by value
+- [ ] When passing arguments to a functions by reference
+
+### Question 51 (q5)
+
+How would you describe the generalized programming paradigm?
+
+- [ ] The available algorithms operate on variable number of arguments with the same data type
+- [ ] The available algorithms operate on any data type
+- [ ] The generalized data structures stores objects of any type
+- [ ] The generalized programming allows for writing programms that customize themselves to each user
+
+### Question 52 (q14)
+
+What are the **static_cast** characteristics?
+
+- [ ] It is an RTTI-based casting, used with pointers and references
+- [ ] It allows to cast from base class to the derived one and vice versa
+- [ ] It is used for removing the **const** qualifier of expression
+- [ ] It converts between types by reinterpreting the underlying bit pattern
+
+### Question 53 (q18)
+
+Can the template class have a friend function? How the friendship could be defined?
+
+- [ ] Yes, it can be a separate friend for each template class method
+- [ ] No, template class cannot have friend functions
+- [ ] Yes, it can be a common friend for all classes generated from a given template
+- [ ] Yes, it can be separate friend for each class generated from template
+
+### Question 54 (q19)
+
+Can we create a template for a single function? How should this be done?
+
+- [ ] Yes, template&lt;class T&gt; int function(T a, int b);
+- [ ] No, it is only possible to create class templates
+- [ ] Yes, template&lt;typename T&gt; int function(T a, int b);
+
+### Question 55 (q20)
+
+When is a function created from a template?
+
+- [ ] When used first time in the program
+- [ ] At the beginning of the program compilation
+- [ ] None answers are correct
+- [ ] At the time of use in the program, but only for the duration of this use
+
+### Question 56 (q21)
+
+Can we overload a template function?
+
+- [ ] Yes, but only with specialized function
+- [ ] No
+- [ ] Yes
+- [ ] Yes, but only with other template function
+
+### Question 57 (q24)
+
+What the multiple inheritance is for?
+
+- [ ] It allows inheritance from multiple independent classes
+- [ ] It enables the use of polymorphism
+- [ ] It allows inheriting from a class that inherits itself from another class
+
+### Question 58 (q28)
+
+Is it possible to get the information about exception type inside the **catch(...)** block>
+
+- [ ] It was impossible in old(< 2011) standards.
+- [ ] It is impossible to retrive the information about the thrown exception.
+- [ ] The **current_exception()** returns **exception_ptr** which gives access to the exception object (valid from 2011)
+
+## Questions from other sources - RAR with images
+
+### Question 59 (unknown.png)
+
+What is the functionality of delegating constructors?
+
+- [ ] It enables the default constructor to be explicitly called
+- [ ] It allows one to call a constructor in the initialization list of another constructor of the class
+- [ ] It allows one to call a constructor in the body of any class method
+
+### Question 60 (unknown (2).png)
+
+What are the characteristics of static variables that are class members?
+
+- [ ] Common to all class objects
+- [ ] Variables seen in the global scope of the program
+- [ ] Variables created once in memory for the whole class
+- [ ] They exist before the class object is defined
+
+### Question 61 (unknown (3).png)
+
+Can a class member function be a friend to other class?
+
+- [ ] No
+- [ ] Yes
+
+### Question 62 (unknown (8).png)
+
+What is always true for an abstract class?
+
+- [ ] Ensures that an object of such class will not be created
+- [ ] Adds more data abstraction than regular classes
+- [ ] Highlights some common features of objects
+- [ ] It always starts a hierarchy of classes
+
+### Question 63 (unknown (9).png)
+
+Which of the following are the advantages of polymorphism?
+
+- [ ] Ability to expand the program with a new class in the class hierarchy, without changing the code of the existing program
+- [ ] Ability to extend an existing class even if we do not know its definition
+- [ ] Slower program performance and more memory consumption
+- [ ] Possibility to use inheritance
+
+### Question 64 (unknown (12).png)
+
+What are templates for?
+
+- [ ] They are to create a family of very similar functions or classes that do the same for different data types
+- [ ] They are for extending existing user types
+- [ ] They are for overloading existing built-in types
+
+### Question 65 (unknown (17).png)
+
+Do standard conversions work with private inheritance?
+
+- [ ] No
+- [ ] Yes
+
+### Question 66 (unknown (22).png)
+
+What are **reinterpret_cast** characteristics?
+
+- [ ] It allows to cast from base class to the derived one and vice versa
+- [ ] It is RTTI-based casting, used with pointers and references
+- [ ] It is used for removing the **const** quantifier of expression
+- [ ] It converts between types by differently interpreting the underlying bit pattern
+
+### Question 67 (unknown (30).png)
+
+Why can't we refer to the **this** variable in a static function that is a class member?
+
+- [ ] Because **this** is one of the keywords
+- [ ] Because static function only references to class static variables
+- [ ] Bacause the function can be called when no objects exist
+- [ ] Because the function is not related to the object, but to the class
+
+## Questions from other sources - DC private message
+
+### Question 68 (DC PM 1)
+
+When does the compiler reach for a class template to generate appropriate instance?
+
+- [ ] When a template class object is defined
+- [ ] When including a header with template declaration
+- [ ] When declaring a function whose argument is a template class object
+
+### Question 69 (DC PM 2)
+
+Can we overload **operator <<** to print K class members to the stream? And assure it will work in such an example:
+**K k;**
+**cout << "Example" << K << endl;**
+How would look like a prototype for such a function?
+
+- [ ] Yes, **ostream& operator<<(ostream& in, K& k);**
+- [ ] Yes, **ostream& operator<<(K& k, ostream& in);**
+- [ ] Yes, **bool operator<<(ostream& in, K& k);**
+- [ ] No
+
+### Question 70 (DC PM 3)
+
+What does the fstream library support?
+
+- [ ] Input and output operations on standard devices
+- [ ] Entering and retrieving information from files
+- [ ] Error hadling
+- [ ] Internal formatting
+
+### Question 71 (DC PM 4)
+
+What does it mean when we assign **override** specifier to a function?
+
+- [ ] It blocks automatic creation of functions default
+- [ ] It informs that the function cannot be further developed
+- [ ] It informs that the function body should be implemented for this class
+- [ ] It forces automatic creation of default functions
+
+### Question 72 (DC PM 5)
+
+What are namespaces?
+
+- [ ] The space in memory that stores the names of variables, functions
+- [ ] Rules for naming variables
+- [ ] The method of code organization that enables linking the code thematically and prevents redefinition of existing classes/functions
+- [ ] Modifiers that allow you to use the short name of the method, e.g. instead of **std::cout** we use **cout**
+
+### Question 73 (DC PM 6)
+
+What is the **std::initializer_list<>**?
+
+- [ ] It allows initialization of class constants
+- [ ] It allows one to pass any number of values of the same type to the function
+- [ ] It enables one to create a constructor that allows to take a list of values of the same type
+- [ ] It allows one to pass any number of arguments to the function
+
+### Question 74 (DC PM 7)
+
+Can exceptions be thrown in the **catch** block? When it make sense?
+
+- [ ] Yes, if a given handler is not able to fully handle the exception, it can re-throw it
+- [ ] Yes, if and exception occurs while handling the exception
+- [ ] No, you cannot throw another exception while handling the exception
+- [ ] Yes, if it catches more than one exception simultaneously
